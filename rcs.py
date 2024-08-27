@@ -1,7 +1,6 @@
 import tkinter as tk
 import random
 
-# Function to determine the winner
 def determine_winner(user_choice, computer_choice):
     if user_choice == computer_choice:
         return "It's a Tie!"
@@ -12,13 +11,10 @@ def determine_winner(user_choice, computer_choice):
     else:
         return "You Lose!"
 
-# Function to handle user choice
 def play(user_choice):
     choices = ["rock", "paper", "scissors"]
     computer_choice = random.choice(choices)
     result = determine_winner(user_choice, computer_choice)
-    
-    # Update labels and scores
     user_choice_label.config(text=f"Your Choice: {user_choice.capitalize()}")
     computer_choice_label.config(text=f"Computer's Choice: {computer_choice.capitalize()}")
     result_label.config(text=result)
@@ -31,8 +27,7 @@ def play(user_choice):
         global computer_score
         computer_score += 1
         computer_score_label.config(text=f"Computer's Score: {computer_score}")
-
-# Function to reset the game
+        
 def reset_game():
     global user_score, computer_score
     user_score, computer_score = 0, 0
@@ -42,11 +37,9 @@ def reset_game():
     computer_choice_label.config(text="Computer's Choice: None")
     result_label.config(text="Welcome to Rock-Paper-Scissors!")
 
-# Create main window
 root = tk.Tk()
 root.title("Rock-Paper-Scissors Game")
 
-# Set window size and position
 window_width = 400
 window_height = 300
 screen_width = root.winfo_screenwidth()
@@ -55,11 +48,9 @@ x = (screen_width // 2) - (window_width // 2)
 y = (screen_height // 2) - (window_height // 2)
 root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
-# Initialize scores
 user_score = 0
 computer_score = 0
 
-# Create and place widgets
 title_label = tk.Label(root, text="Rock-Paper-Scissors Game", font=("Arial", 18, "bold"))
 title_label.pack(pady=10)
 
@@ -91,5 +82,4 @@ computer_score_label.grid(row=0, column=1, padx=10)
 reset_button = tk.Button(root, text="Reset Game", command=reset_game, font=("Arial", 12))
 reset_button.pack(pady=10)
 
-# Start the application
 root.mainloop()
